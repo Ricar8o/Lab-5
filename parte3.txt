@@ -1,0 +1,3 @@
+Parte 3
+
+- Con la acción get, en la url se puede observar el valor del Id. Mientras que con la acción post no se observa el valor del id ingresado.
