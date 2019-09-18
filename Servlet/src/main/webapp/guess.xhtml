@@ -2,17 +2,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3c.org/1999/xhtml"
 xmlns:h="http://xmlns.jcp.org/jsf/html"
-xmlns:p="http://primefaces.org/ui">
+xmlns:p="http://primefaces.org/ui"
+xmlns:f="http://java.sun.com/jsf/core">
 
 <h:body>
 	<h:form id="guess_form">
-	<p:outputLabel style= "display: none" value="#{guessBean.numero}"/>
-	<p:inputText readonly = "false" value="#{guessBean.intentos}"/>
-	<p:outputLabel value="#{guessBean.intentos}"/>
-	<p:outputLabel value="#{guessBean.estado}"/>
-	<p:outputLabel value="#{guessBean.premio}"/>
-	<p:commandButton update="guess_form" actionListener="#{guessBean.guess}"/>
-	<p:commandButton update="guess_form" actionListener="#{guessBean.guess}"/>
+	<p> <p:outputLabel style= "display: none" value="#{guessBean.numero}"/> </p>
+	<p> <p:inputText readonly = "false" name = "valor" value="#{guessBean.numeroIngresado}"/> </p>
+	<p> <p:outputLabel value="#{guessBean.intentos}"/> </p>
+	<p> <p:outputLabel value="#{guessBean.estado}"/> </p>
+	<p> <p:outputLabel value="#{guessBean.premio}"/> </p>
+	<p> <p:commandButton update="guess_form" actionListener="#{guessBean.guess}"  value="Enviar"/> 
+	<p:commandButton update="guess_form" actionListener="#{guessBean.restart}" value="Reset" /> </p>
+	<h:dataTable  value="#{guessBean.intentosRealizados}" var="intento"
+        styleClass="order-table" headerClass="order-table-header"
+        rowClasses="order-table-odd-row,order-table-even-row">
+
+        <h:column>
+            <f:facet name="header">Intentos</f:facet>
+            #{intento}
+        </h:column>
+    </h:dataTable>
 	</h:form>
 </h:body>
 </html>
